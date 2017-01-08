@@ -9,6 +9,12 @@ class Publisher(models.Model):
     country = models.CharField(max_length=50)
     website = models.URLField()
 
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        ordering = ['name']
+
 
 class Author(models.Model):
     first_name = models.CharField(max_length=30)
@@ -16,7 +22,11 @@ class Author(models.Model):
     email = models.EmailField()
 
 
-class Books(models.Model):
+class Book(models.Model):
     title = models.CharField(max_length=100)
     authors = models.ManyToManyField(Author)
     publisher = models.ForeignKey(Publisher)
+    publication_date = models.DateField()
+
+    def __str__(self):
+        return self.title
