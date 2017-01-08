@@ -1,7 +1,7 @@
 from django.db import models
 
 
-class Publisher(models.model):
+class Publisher(models.Model):
     name = models.CharField(max_length=30)
     address = models.CharField(max_length=50)
     city = models.CharField(max_length=60)
@@ -10,13 +10,13 @@ class Publisher(models.model):
     website = models.URLField()
 
 
-class Author(models.model):
+class Author(models.Model):
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=40)
     email = models.EmailField()
 
 
-class Books(models.model):
+class Books(models.Model):
     title = models.CharField(max_length=100)
     authors = models.ManyToManyField(Author)
     publisher = models.ForeignKey(Publisher)
